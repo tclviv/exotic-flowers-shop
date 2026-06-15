@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин екзотичних квітів</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>🌺 Магазин екзотичних квітів</h1>
+        <p>Розкішні квіти з усього світу для особливих моментів</p>
+
+        <nav class="nav-panel">
+            <span id="currentUserName"></span>
+
+            <button onclick="goProfile()" id="profileBtn" style="display:none;">
+                👤 Профіль
+            </button>
+
+            <button onclick="goCart()" id="cartBtn" style="display:none;">
+                🛒 Кошик (<span id="cartCount">0</span>)
+            </button>
+
+            <button onclick="goCheckout()" id="checkoutBtn" style="display:none;">
+                📦 Оформлення
+            </button>
+
+            <button onclick="goAdmin()" id="adminBtn" style="display:none;">
+                ⚙ Адмін-панель
+            </button>
+
+            <button onclick="logout()" id="logoutBtn" style="display:none;">
+                🚪 Вийти
+            </button>
+        </nav>
+    </div>
+</header>
+
+<section id="authBlock" class="auth-section">
+
+    <div class="auth-card">
+
+        <h2>🔐 Вхід</h2>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email">
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Пароль">
+
+        <button
+            class="btn-main"
+            onclick="login()">
+            Увійти
+        </button>
+
+        <div class="auth-links">
+            <a href="login.html" class="auth-page-btn">
+                🔑 Повна сторінка входу
+            </a>
+        </div>
+
+    </div>
+
+    <div class="auth-card">
+
+        <h2>✨ Реєстрація</h2>
+
+        <input
+            type="text"
+            id="regUsername"
+            placeholder="Ім’я">
+
+        <input
+            type="email"
+            id="regEmail"
+            placeholder="Email">
+
+        <input
+            type="password"
+            id="regPassword"
+            placeholder="Пароль">
+
+        <button
+            class="btn-main"
+            onclick="register()">
+            Зареєструватися
+        </button>
+
+        <div class="auth-links">
+            <a href="register.html" class="auth-page-btn">
+                🌸 Повна сторінка реєстрації
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<main class="products">
+    <h2>🌸 Каталог екзотичних квітів</h2>
+
+    <div id="flowersContainer" class="flowers-grid"></div>
+</main>
+
+<footer class="footer">
+    <p>© 2026 Інтернет-магазин екзотичних квітів</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

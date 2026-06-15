@@ -1,0 +1,20 @@
+{
+  "name": "flower-shop",
+  "version": "1.0.0",
+  "description": "Інтернет-магазин екзотичних квітів",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^2.4.3",
+    "chart.js": "^4.5.1",
+    "exceljs": "^4.4.0",
+    "express": "^4.18.3",
+    "express-session": "^1.18.0",
+    "multer": "^2.1.1",
+    "mysql2": "^3.11.5",
+    "pdfkit": "^0.19.1"
+  }
+}

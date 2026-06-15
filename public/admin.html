@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Адмін-панель | Екзотичні квіти</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="logo">🌸 Екзотичні квіти</div>
+
+    <nav class="main-nav">
+        <a href="index.html">Головна</a>
+        <a href="cart.html">🛒 Кошик <span id="cartCount">0</span></a>
+        <a href="profile.html">Профіль</a>
+        <a href="admin.html" class="active">Адмін-панель</a>
+        <button id="logoutBtn" class="nav-btn" onclick="logout()">Вийти</button>
+    </nav>
+</header>
+
+<main class="admin-page">
+
+    <section class="admin-hero">
+        <div>
+            <p class="hero-badge">Панель керування магазином</p>
+            <h1>Адмін-панель</h1>
+            <p>
+                Керуйте товарами, користувачами, замовленнями та статистикою
+                інтернет-магазину екзотичних квітів.
+            </p>
+        </div>
+
+        <div class="hero-card">
+            <span>🌺</span>
+            <h3>Flower Shop</h3>
+            <p>Система адміністрування</p>
+        </div>
+    </section>
+
+    <section class="admin-tabs">
+        <button class="tab-btn active" data-section="productsSection">🌷 Товари</button>
+        <button class="tab-btn" data-section="usersSection">👥 Користувачі</button>
+        <button class="tab-btn" data-section="ordersSection">📦 Замовлення</button>
+        <button class="tab-btn" data-section="statsSection">📊 Статистика</button>
+    </section>
+
+    <section id="productsSection" class="admin-section">
+
+        <div class="section-header">
+            <div>
+                <h2>Керування товарами</h2>
+                <p>Додавання, редагування, зміна залишку та видалення квітів.</p>
+            </div>
+
+            <div class="admin-actions">
+                <button class="secondary-btn" onclick="exportProductsExcel()">📗 Excel</button>
+                <button class="secondary-btn" onclick="exportProductsPDF()">📕 PDF</button>
+
+                <button id="addProductBtn" class="primary-btn" onclick="openAddProductModal()">
+                    ➕ Додати товар
+                </button>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Фото</th>
+                    <th>Назва</th>
+                    <th>Категорія</th>
+                    <th>Країна</th>
+                    <th>Ціна</th>
+                    <th>Залишок</th>
+                    <th>Дії</th>
+                </tr>
+                </thead>
+
+                <tbody id="productsTableBody">
+                <tr>
+                    <td colspan="8" class="empty-row">Завантаження товарів...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="usersSection" class="admin-section" style="display:none;">
+
+        <div class="section-header">
+            <div>
+                <h2>Користувачі</h2>
+                <p>Перегляд користувачів, зміна ролі та видалення облікових записів.</p>
+            </div>
+
+            <div class="admin-actions">
+                <button class="secondary-btn" onclick="exportUsersExcel()">📗 Excel</button>
+                <button class="secondary-btn" onclick="exportUsersPDF()">📕 PDF</button>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Імʼя</th>
+                    <th>Email</th>
+                    <th>Роль</th>
+                    <th>Дії</th>
+                </tr>
+                </thead>
+
+                <tbody id="usersTableBody">
+                <tr>
+                    <td colspan="5" class="empty-row">Завантаження користувачів...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="ordersSection" class="admin-section" style="display:none;">
+
+        <div class="section-header">
+            <div>
+                <h2>Замовлення</h2>
+                <p>Перегляд оформлених замовлень користувачів.</p>
+            </div>
+
+            <div class="admin-actions">
+                <button id="exportExcelBtn" class="secondary-btn" onclick="exportOrdersExcel()">📗 Excel</button>
+                <button id="exportPdfBtn" class="secondary-btn" onclick="exportOrdersPDF()">📕 PDF</button>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Користувач</th>
+                    <th>Email</th>
+                    <th>Сума</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                    <th>Дії</th>
+                </tr>
+                </thead>
+
+                <tbody id="ordersTableBody">
+                <tr>
+                    <td colspan="7" class="empty-row">Завантаження замовлень...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="statsSection" class="admin-section" style="display:none;">
+
+        <div class="section-header">
+            <div>
+                <h2>Статистика магазину</h2>
+                <p>Кількість товарів, користувачів, замовлень та загальний дохід.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span>🌷</span>
+                <h3 id="productsCount">0</h3>
+                <p>Товарів</p>
+            </div>
+
+            <div class="stat-card">
+                <span>👥</span>
+                <h3 id="usersCount">0</h3>
+                <p>Користувачів</p>
+            </div>
+
+            <div class="stat-card">
+                <span>📦</span>
+                <h3 id="ordersCount">0</h3>
+                <p>Замовлень</p>
+            </div>
+
+            <div class="stat-card">
+                <span>💰</span>
+                <h3 id="revenue">0 грн</h3>
+                <p>Дохід</p>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Продажі за днями</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Популярні товари</h3>
+                <canvas id="topProductsChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>

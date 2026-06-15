@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформлення замовлення | Екзотичні квіти</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">🌺 Екзотичні квіти</div>
+
+    <nav class="nav">
+        <a href="index.html">Головна</a>
+        <a href="cart.html">Кошик</a>
+        <a href="profile.html">Профіль</a>
+        <button id="logoutBtn" class="btn-small">Вийти</button>
+    </nav>
+</header>
+
+<main class="page">
+    <section class="page-title">
+        <h1>Оформлення замовлення</h1>
+        <p>Заповніть дані для доставки квітів</p>
+    </section>
+
+    <section class="checkout-wrapper">
+        <form id="checkoutForm" class="checkout-form">
+
+            <label>ПІБ отримувача</label>
+            <input type="text" id="customerName" required placeholder="Введіть ПІБ">
+
+            <label>Номер телефону</label>
+            <input type="text" id="phone" required placeholder="+380...">
+
+            <label>Місто</label>
+            <input type="text" id="city" required placeholder="Наприклад: Львів">
+
+            <label>Адреса доставки</label>
+            <input type="text" id="address" required placeholder="Вулиця, будинок, квартира">
+
+            <label>Коментар до замовлення</label>
+            <textarea id="comment" placeholder="Побажання щодо доставки"></textarea>
+
+            <button type="submit" class="btn-main">
+                Підтвердити замовлення
+            </button>
+        </form>
+
+        <div class="checkout-summary">
+            <h2>Ваше замовлення</h2>
+            <div id="checkoutItems"></div>
+
+            <hr>
+
+            <h3>Разом: <span id="checkoutTotal">0 грн</span></h3>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>© 2026 Інтернет-магазин екзотичних квітів</p>
+</footer>
+
+<script src="js/checkout.js"></script>
+</body>
+</html>

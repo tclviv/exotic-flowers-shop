@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль | Екзотичні квіти</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="profile-page">
+
+<header class="site-header">
+    <div class="logo">🌸 Екзотичні квіти</div>
+
+    <nav class="main-nav">
+        <a href="index.html">Головна</a>
+
+        <a href="cart.html">
+            🛒 Кошик <span id="cartCount">0</span>
+        </a>
+
+        <a href="profile.html" class="active">Профіль</a>
+
+        <a id="adminLink" href="admin.html" style="display:none;">
+            Адмін-панель
+        </a>
+
+        <button class="nav-btn" onclick="logout()">Вийти</button>
+    </nav>
+</header>
+
+<main class="admin-page">
+
+    <section class="admin-hero">
+        <div>
+            <div class="hero-badge">Особистий кабінет</div>
+
+            <h1>Профіль користувача</h1>
+
+            <p>
+                Перегляд особистої інформації, редагування даних,
+                фото клієнта, замовлення та статистика покупок.
+            </p>
+        </div>
+
+        <div class="hero-card profile-card">
+            <div id="profilePhoto" class="profile-avatar">
+                👤
+            </div>
+
+            <h3 id="profileUsername">Користувач</h3>
+            <p id="profileEmail">user@email.com</p>
+        </div>
+    </section>
+
+    <section class="table-card">
+        <div class="section-header">
+            <div>
+                <h2>👤 Особиста інформація</h2>
+                <p>Основні дані користувача та контактна інформація.</p>
+            </div>
+
+            <button class="primary-btn" onclick="openEditProfileModal()">
+                ✏️ Редагувати профіль
+            </button>
+        </div>
+
+        <p>
+            <b>Ім'я користувача:</b>
+            <span id="userName">-</span>
+        </p>
+
+        <br>
+
+        <p>
+            <b>Email:</b>
+            <span id="userEmail">-</span>
+        </p>
+
+        <br>
+
+        <p>
+            <b>Телефон:</b>
+            <span id="userPhone">-</span>
+        </p>
+
+        <br>
+
+        <p>
+            <b>Адреса:</b>
+            <span id="userAddress">-</span>
+        </p>
+
+        <br>
+
+        <p>
+            <b>Роль:</b>
+            <span id="userRole">-</span>
+        </p>
+    </section>
+
+    <section class="table-card">
+        <div class="section-header">
+            <div>
+                <h2>📊 Моя статистика</h2>
+                <p>Статистика покупок користувача.</p>
+            </div>
+
+            <div class="admin-actions">
+                <button class="secondary-btn" onclick="exportMyOrdersExcel()">
+                    📗 Excel
+                </button>
+
+                <button class="secondary-btn" onclick="exportMyOrdersPDF()">
+                    📕 PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span>🛍️</span>
+                <h3 id="myOrdersCount">0</h3>
+                <p>Замовлень</p>
+            </div>
+
+            <div class="stat-card">
+                <span>💰</span>
+                <h3 id="myTotalSpent">0 грн</h3>
+                <p>Витрачено</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🌺</span>
+                <h3 id="clientStatus">Новий</h3>
+                <p>Статус клієнта</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="table-card">
+        <div class="section-header">
+            <div>
+                <h2>📦 Історія замовлень</h2>
+                <p>Список усіх ваших покупок.</p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Сума</th>
+                <th>Статус</th>
+                <th>Дата</th>
+            </tr>
+            </thead>
+
+            <tbody id="profileOrdersTableBody">
+            <tr>
+                <td colspan="4" class="empty-row">Завантаження...</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div id="editProfileModal" class="modal-bg" style="display:none;">
+        <div class="modal-box product-modal">
+            <h2>✏️ Редагування профілю</h2>
+
+            <form id="editProfileForm">
+                <label>Ім'я користувача</label>
+                <input type="text" id="editUsername" name="username" required>
+
+                <label>Email</label>
+                <input type="email" id="editEmail" name="email" required>
+
+                <label>Телефон</label>
+                <input type="text" id="editPhone" name="phone" placeholder="+380...">
+
+                <label>Адреса</label>
+                <input type="text" id="editAddress" name="address" placeholder="Адреса доставки">
+
+                <label>Фото клієнта</label>
+                <input type="file" id="editPhoto" name="photo" accept="image/*">
+
+                <div class="modal-actions">
+                    <button type="submit">💾 Зберегти</button>
+                    <button type="button" onclick="closeEditProfileModal()">Скасувати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    © 2026 Екзотичні квіти
+</footer>
+
+<script src="/js/profile.js"></script>
+
+</body>
+</html>
